@@ -42,6 +42,9 @@ function loadFilms() {
         filmElement.innerHTML = `
             <a href="${film.link}" target="_blank" rel="noopener noreferrer">
                 <img src="${film.thumbnail}" alt="${film.title}" class="film-thumbnail">
+                <div class="film-overlay">
+                    <span class="play-icon">▶</span>
+                </div>
             </a>
             <p class="film-title">${film.title}</p>
             <p class="film-runtime">${film.runtime}</p>
