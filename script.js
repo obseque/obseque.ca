@@ -9,20 +9,24 @@ const imageBank = [
     'https://via.placeholder.com/800x600?text=ACC+Image+3',
     'https://via.placeholder.com/800x600?text=ACC+Image+4',
     'https://via.placeholder.com/800x600?text=ACC+Image+5',
-    // Replace these with your actual image URLs
+    // TO ADD YOUR OWN IMAGES:
+    // 1. Upload your images to a hosting service (imgur, Cloudinary, etc.)
+    // 2. Get the direct image URL
+    // 3. Add it to this array like this:
+    // 'https://your-image-hosting.com/image1.jpg',
+    // 4. Save and refresh your website
 ];
 
 // Load random image on page load
 window.addEventListener('DOMContentLoaded', () => {
     loadRandomImage();
     loadFilms();
-    loadPhotos();
     setupNavigation();
 });
 
 function loadRandomImage() {
     if (imageBank.length === 0) {
-        console.log('Image bank is empty. Add images to the imageBank array.');
+        console.log('Image bank is empty. Add images to the imageBank array in script.js');
         return;
     }
     const randomIndex = Math.floor(Math.random() * imageBank.length);
@@ -38,19 +42,19 @@ function loadRandomImage() {
 const filmsData = [
     {
         id: 1,
-        title: 'Film 1',
+        title: 'memento mori câlisse',
         thumbnail: 'https://img.youtube.com/vi/u28oM7qivUE/maxresdefault.jpg',
         link: 'https://youtu.be/u28oM7qivUE?si=eH-7rTtPfwaReOZx'
     },
     {
         id: 2,
-        title: 'Film 2',
+        title: 'Un film par Obsèque',
         thumbnail: 'https://img.youtube.com/vi/5V-AFPsxIWw/maxresdefault.jpg',
         link: 'https://youtu.be/5V-AFPsxIWw?si=9EOuNhkGg9dUxsfn'
     },
     {
         id: 3,
-        title: 'Film 3',
+        title: 'FLIP',
         thumbnail: 'https://img.youtube.com/vi/X_1-4bnYSuI/maxresdefault.jpg',
         link: 'https://youtu.be/X_1-4bnYSuI?si=ND1Ihz9kSOF8-WTG'
     }
@@ -73,33 +77,6 @@ function loadFilms() {
             <p class="film-title">${film.title}</p>
         `;
         filmsGrid.appendChild(filmElement);
-    });
-}
-
-// ============================================
-// PHOTOS SECTION - PHOTO GRID
-// ============================================
-
-// Photos data - Update with your photo URLs
-const photosData = [
-    { id: 1, url: 'https://via.placeholder.com/600x400?text=Photo+1' },
-    { id: 2, url: 'https://via.placeholder.com/600x400?text=Photo+2' },
-    { id: 3, url: 'https://via.placeholder.com/600x400?text=Photo+3' },
-    { id: 4, url: 'https://via.placeholder.com/600x400?text=Photo+4' },
-    { id: 5, url: 'https://via.placeholder.com/600x400?text=Photo+5' },
-    { id: 6, url: 'https://via.placeholder.com/600x400?text=Photo+6' },
-    // Add more photos as needed
-];
-
-function loadPhotos() {
-    const photosGrid = document.getElementById('photos-grid');
-    photosGrid.innerHTML = '';
-
-    photosData.forEach(photo => {
-        const photoElement = document.createElement('div');
-        photoElement.className = 'photo-item';
-        photoElement.innerHTML = `<img src="${photo.url}" alt="Photo ${photo.id}">`;
-        photosGrid.appendChild(photoElement);
     });
 }
 
