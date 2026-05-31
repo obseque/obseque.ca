@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OBSÈQUE</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navigation">
+        <div class="nav-container">
+            <a href="#home" class="logo">OBSÈQUE</a>
+            <ul class="nav-links">
+                <li><a href="#acc">ACC</a></li>
+                <li><a href="#films">FILMS</a></li>
+                <li><a href="#photos">PHOTOS</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- ACC SECTION -->
+        <section id="acc" class="section acc-section">
+            <div class="container">
+                <h1>ACC</h1>
+                <div class="acc-gallery">
+                    <img id="random-image" src="" alt="Random artwork" class="random-image">
+                    <button class="refresh-btn" onclick="loadRandomImage()">REFRESH</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FILMS SECTION -->
+        <section id="films" class="section films-section">
+            <div class="container">
+                <h1>FILMS</h1>
+                <div class="films-grid" id="films-grid">
+                    <!-- Films will be populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- PHOTOS SECTION -->
+        <section id="photos" class="section photos-section">
+            <div class="container">
+                <h1>PHOTOS</h1>
+                <div class="photos-grid" id="photos-grid">
+                    <!-- Photos will be populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <h1>CONTACT</h1>
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">NAME</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">EMAIL</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">MESSAGE</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">SEND</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 OBSÈQUE. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
