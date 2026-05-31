@@ -1,43 +1,4 @@
 // ============================================
-// ACC SECTION - RANDOM IMAGE GALLERY
-// ============================================
-
-// Image bank - Add your image URLs here
-// TO ADD YOUR OWN IMAGES FROM GOOGLE DRIVE:
-// 1. Upload images to your Google Drive folder
-// 2. Right-click each image > Share > "Anyone with the link"
-// 3. Copy the link, extract the FILE_ID
-// 4. Use format: https://drive.google.com/uc?id=FILE_ID&export=download
-// 5. Add to array below
-
-const imageBank = [
-    'https://via.placeholder.com/800x600?text=ACC+Image+1',
-    'https://via.placeholder.com/800x600?text=ACC+Image+2',
-    'https://via.placeholder.com/800x600?text=ACC+Image+3',
-    'https://via.placeholder.com/800x600?text=ACC+Image+4',
-    'https://via.placeholder.com/800x600?text=ACC+Image+5',
-    // Example with Google Drive:
-    // 'https://drive.google.com/uc?id=1Dcl3A74mAACu9HUBmdFEQu1UCvgRobjg&export=download',
-];
-
-// Load random image on page load
-window.addEventListener('DOMContentLoaded', () => {
-    loadRandomImage();
-    loadFilms();
-    setupNavigation();
-});
-
-function loadRandomImage() {
-    if (imageBank.length === 0) {
-        console.log('Image bank is empty. Add images to the imageBank array in script.js');
-        return;
-    }
-    const randomIndex = Math.floor(Math.random() * imageBank.length);
-    const randomImage = imageBank[randomIndex];
-    document.getElementById('random-image').src = randomImage;
-}
-
-// ============================================
 // FILMS SECTION - THUMBNAIL GRID
 // ============================================
 
@@ -66,6 +27,11 @@ const filmsData = [
     }
 ];
 
+// Load films on page load
+window.addEventListener('DOMContentLoaded', () => {
+    loadFilms();
+});
+
 function loadFilms() {
     const filmsGrid = document.getElementById('films-grid');
     filmsGrid.innerHTML = '';
@@ -82,32 +48,4 @@ function loadFilms() {
         `;
         filmsGrid.appendChild(filmElement);
     });
-}
-
-// ============================================
-// NAVIGATION - SECTION SWITCHING
-// ============================================
-
-function setupNavigation() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            showSection(targetId);
-        });
-    });
-}
-
-function showSection(sectionId) {
-    // Hide all sections
-    document.querySelectorAll('.section').forEach(section => {
-        section.classList.remove('active');
-    });
-    
-    // Show target section
-    const targetSection = document.getElementById(sectionId);
-    if (targetSection) {
-        targetSection.classList.add('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
 }
