@@ -17,7 +17,7 @@ window.addEventListener('DOMContentLoaded', () => {
     loadRandomImage();
     loadFilms();
     loadPhotos();
-    setupContactForm();
+    scrollToACC();
 });
 
 function loadRandomImage() {
@@ -28,6 +28,13 @@ function loadRandomImage() {
     const randomIndex = Math.floor(Math.random() * imageBank.length);
     const randomImage = imageBank[randomIndex];
     document.getElementById('random-image').src = randomImage;
+}
+
+function scrollToACC() {
+    const accSection = document.getElementById('acc');
+    if (accSection) {
+        accSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 }
 
 // ============================================
@@ -102,52 +109,6 @@ function loadPhotos() {
         photoElement.innerHTML = `<img src="${photo.url}" alt="Photo ${photo.id}">`;
         photosGrid.appendChild(photoElement);
     });
-}
-
-// ============================================
-// CONTACT SECTION - FORM HANDLING
-// ============================================
-
-function setupContactForm() {
-    const form = document.getElementById('contact-form');
-    form.addEventListener('submit', handleFormSubmit);
-}
-
-function handleFormSubmit(e) {
-    e.preventDefault();
-
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-
-    // Option 1: Send to Formspree (free service)
-    // Replace 'your-email@example.com' with your actual email
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('email', email);
-    formData.append('message', message);
-
-    // Using Formspree service (recommended for static sites)
-    fetch('https://formspree.io/f/YOUR_FORM_ID', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => {
-        if (response.ok) {
-            alert('Message sent successfully!');
-            document.getElementById('contact-form').reset();
-        } else {
-            alert('There was an error sending your message.');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('There was an error sending your message.');
-    });
-
-    // Option 2: Alternative - Use simple email link (requires manual setup)
-    // Uncomment the line below to use mailto instead:
-    // window.location.href = `mailto:your-email@example.com?subject=Message from ${name}&body=${message}%0A%0AFrom: ${email}`;
 }
 
 // ============================================

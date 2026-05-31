@@ -9,11 +9,12 @@
 }
 
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'IBM Plex Mono', monospace;
     background-color: #ffffff;
     color: #000000;
     line-height: 1.6;
     letter-spacing: 0.02em;
+    font-weight: 400;
 }
 
 /* ============================================
@@ -40,11 +41,12 @@ body {
 
 .logo {
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: 0.15em;
     text-decoration: none;
     color: #000000;
     transition: opacity 0.3s ease;
+    font-family: 'IBM Plex Mono', monospace;
 }
 
 .logo:hover {
@@ -63,6 +65,8 @@ body {
     text-decoration: none;
     color: #000000;
     transition: opacity 0.3s ease;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
 }
 
 .nav-links a:hover {
@@ -81,19 +85,15 @@ body {
 
 .section {
     padding: 100px 0;
-    border-bottom: 1px solid #000000;
-}
-
-.section:last-child {
-    border-bottom: none;
 }
 
 h1 {
     font-size: 32px;
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: 0.15em;
     margin-bottom: 60px;
     text-transform: uppercase;
+    font-family: 'IBM Plex Mono', monospace;
 }
 
 /* ============================================
@@ -123,9 +123,10 @@ h1 {
     color: #000000;
     border: 1px solid #000000;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 400;
     text-transform: uppercase;
     transition: all 0.3s ease;
+    font-family: 'IBM Plex Mono', monospace;
 }
 
 .refresh-btn:hover {
@@ -194,7 +195,8 @@ h1 {
     letter-spacing: 0.1em;
     margin-top: 12px;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 400;
+    font-family: 'IBM Plex Mono', monospace;
 }
 
 /* ============================================
@@ -224,63 +226,27 @@ h1 {
 }
 
 /* ============================================
-   CONTACT SECTION - FORM
+   CONTACT SECTION
    ============================================ */
 
-.contact-form {
+.contact-info {
     max-width: 600px;
     margin: 0 auto;
+    font-size: 16px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
+    letter-spacing: 0.05em;
 }
 
-.form-group {
-    margin-bottom: 30px;
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group label {
-    font-size: 12px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-bottom: 8px;
-}
-
-.form-group input,
-.form-group textarea {
-    padding: 12px;
-    border: 1px solid #000000;
-    background-color: #ffffff;
+.contact-info a {
     color: #000000;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 14px;
-    transition: border-color 0.3s ease;
+    text-decoration: none;
+    border-bottom: 1px solid #000000;
+    transition: opacity 0.3s ease;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: #000000;
-    box-shadow: inset 0 0 0 1px #000000;
-}
-
-.submit-btn {
-    padding: 12px 30px;
-    font-size: 12px;
-    letter-spacing: 0.15em;
-    background-color: #ffffff;
-    color: #000000;
-    border: 1px solid #000000;
-    cursor: pointer;
-    font-weight: 600;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    width: 100%;
-}
-
-.submit-btn:hover {
-    background-color: #000000;
-    color: #ffffff;
+.contact-info a:hover {
+    opacity: 0.6;
 }
 
 /* ============================================
@@ -293,6 +259,8 @@ h1 {
     border-top: 1px solid #000000;
     font-size: 12px;
     letter-spacing: 0.1em;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
 }
 
 /* ============================================
