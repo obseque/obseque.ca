@@ -17,7 +17,7 @@ window.addEventListener('DOMContentLoaded', () => {
     loadRandomImage();
     loadFilms();
     loadPhotos();
-    scrollToACC();
+    setupNavigation();
 });
 
 function loadRandomImage() {
@@ -30,13 +30,6 @@ function loadRandomImage() {
     document.getElementById('random-image').src = randomImage;
 }
 
-function scrollToACC() {
-    const accSection = document.getElementById('acc');
-    if (accSection) {
-        accSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-}
-
 // ============================================
 // FILMS SECTION - THUMBNAIL GRID
 // ============================================
@@ -46,22 +39,21 @@ const filmsData = [
     {
         id: 1,
         title: 'Film 1',
-        thumbnail: 'https://via.placeholder.com/400x300?text=Film+1',
-        link: 'https://vimeo.com/123456789' // Replace with your Vimeo/YouTube URL
+        thumbnail: 'https://img.youtube.com/vi/u28oM7qivUE/maxresdefault.jpg',
+        link: 'https://youtu.be/u28oM7qivUE?si=eH-7rTtPfwaReOZx'
     },
     {
         id: 2,
         title: 'Film 2',
-        thumbnail: 'https://via.placeholder.com/400x300?text=Film+2',
-        link: 'https://vimeo.com/123456790'
+        thumbnail: 'https://img.youtube.com/vi/5V-AFPsxIWw/maxresdefault.jpg',
+        link: 'https://youtu.be/5V-AFPsxIWw?si=9EOuNhkGg9dUxsfn'
     },
     {
         id: 3,
         title: 'Film 3',
-        thumbnail: 'https://via.placeholder.com/400x300?text=Film+3',
-        link: 'https://vimeo.com/123456791'
-    },
-    // Add more films as needed
+        thumbnail: 'https://img.youtube.com/vi/X_1-4bnYSuI/maxresdefault.jpg',
+        link: 'https://youtu.be/X_1-4bnYSuI?si=ND1Ihz9kSOF8-WTG'
+    }
 ];
 
 function loadFilms() {
@@ -112,18 +104,29 @@ function loadPhotos() {
 }
 
 // ============================================
-// SMOOTH SCROLLING FOR NAVIGATION
+// NAVIGATION - SECTION SWITCHING
 // ============================================
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
+function setupNavigation() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            showSection(targetId);
+        });
     });
-});
+}
+
+function showSection(sectionId) {
+    // Hide all sections
+    document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+    });
+    
+    // Show target section
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+        targetSection.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}

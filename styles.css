@@ -9,12 +9,13 @@
 }
 
 body {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     background-color: #ffffff;
-    color: #000000;
-    line-height: 1.6;
-    letter-spacing: 0.02em;
-    font-weight: 400;
+    color: #111111;
+    line-height: 1.4;
+    letter-spacing: 0.2px;
+    font-weight: 300;
+    font-size: 14px;
 }
 
 /* ============================================
@@ -35,22 +36,16 @@ body {
     margin: 0 auto;
     padding: 0 40px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .logo {
     font-size: 18px;
-    font-weight: 400;
-    letter-spacing: 0.15em;
-    text-decoration: none;
+    font-weight: 300;
+    letter-spacing: 0.1em;
     color: #000000;
-    transition: opacity 0.3s ease;
-    font-family: 'IBM Plex Mono', monospace;
-}
-
-.logo:hover {
-    opacity: 0.7;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .nav-links {
@@ -65,8 +60,8 @@ body {
     text-decoration: none;
     color: #000000;
     transition: opacity 0.3s ease;
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 400;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
 }
 
 .nav-links a:hover {
@@ -85,15 +80,20 @@ body {
 
 .section {
     padding: 100px 0;
+    display: none;
+}
+
+.section.active {
+    display: block;
 }
 
 h1 {
     font-size: 32px;
-    font-weight: 400;
-    letter-spacing: 0.15em;
+    font-weight: 300;
+    letter-spacing: 0.1em;
     margin-bottom: 60px;
     text-transform: uppercase;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /* ============================================
@@ -123,10 +123,10 @@ h1 {
     color: #000000;
     border: 1px solid #000000;
     cursor: pointer;
-    font-weight: 400;
+    font-weight: 300;
     text-transform: uppercase;
     transition: all 0.3s ease;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .refresh-btn:hover {
@@ -195,8 +195,8 @@ h1 {
     letter-spacing: 0.1em;
     margin-top: 12px;
     text-transform: uppercase;
-    font-weight: 400;
-    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 300;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /* ============================================
@@ -232,10 +232,10 @@ h1 {
 .contact-info {
     max-width: 600px;
     margin: 0 auto;
-    font-size: 16px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 400;
-    letter-spacing: 0.05em;
+    font-size: 14px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.2px;
 }
 
 .contact-info a {
@@ -250,27 +250,13 @@ h1 {
 }
 
 /* ============================================
-   FOOTER
-   ============================================ */
-
-.footer {
-    padding: 40px;
-    text-align: center;
-    border-top: 1px solid #000000;
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 400;
-}
-
-/* ============================================
    RESPONSIVE DESIGN
    ============================================ */
 
 @media (max-width: 768px) {
     .nav-container {
         flex-direction: column;
-        gap: 20px;
+        gap: 15px;
         padding: 20px;
     }
 
