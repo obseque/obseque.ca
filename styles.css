@@ -82,12 +82,6 @@ body {
    GENERAL LAYOUT
    ============================================ */
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 40px;
-}
-
 .section {
     padding: 80px 0;
 }
@@ -99,6 +93,32 @@ h1 {
     margin-bottom: 50px;
     text-transform: uppercase;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* ============================================
+   CONTENT SECTION - TWO COLUMN LAYOUT
+   ============================================ */
+
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.content-column {
+    width: 100%;
+}
+
+.left-column {
+    /* Films column */
+}
+
+.right-column {
+    /* Image column */
 }
 
 /* ============================================
@@ -162,8 +182,41 @@ h1 {
 }
 
 /* ============================================
+   IMAGE CONTAINER - RIGHT COLUMN
+   ============================================ */
+
+.image-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    min-height: 400px;
+}
+
+.featured-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    border: 1px solid #000000;
+}
+
+/* ============================================
    RESPONSIVE DESIGN
    ============================================ */
+
+@media (max-width: 1024px) {
+    .content-wrapper {
+        gap: 30px;
+        padding: 0 30px;
+    }
+
+    .image-container {
+        min-height: 350px;
+    }
+}
 
 @media (max-width: 768px) {
     .logo {
@@ -179,21 +232,34 @@ h1 {
         padding: 20px;
     }
 
-    .container {
+    .section {
+        padding: 60px 0;
+    }
+
+    /* STACK VERTICALLY ON MOBILE */
+    .content-wrapper {
+        grid-template-columns: 1fr;
+        gap: 40px;
         padding: 0 20px;
+    }
+
+    .films-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .image-container {
+        min-height: 300px;
+        order: 2;
+    }
+
+    .left-column {
+        order: 1;
     }
 
     h1 {
         font-size: 20px;
         margin-bottom: 30px;
-    }
-
-    .section {
-        padding: 60px 0;
-    }
-
-    .films-grid {
-        grid-template-columns: 1fr;
     }
 }
 
@@ -207,8 +273,13 @@ h1 {
         gap: 10px;
     }
 
-    .container {
+    .section {
+        padding: 40px 0;
+    }
+
+    .content-wrapper {
         padding: 0 15px;
+        gap: 30px;
     }
 
     h1 {
@@ -216,7 +287,11 @@ h1 {
         margin-bottom: 20px;
     }
 
-    .section {
-        padding: 40px 0;
+    .image-container {
+        min-height: 250px;
+    }
+
+    .film-thumbnail {
+        height: 150px;
     }
 }
