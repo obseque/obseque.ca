@@ -114,11 +114,13 @@ h1 {
 .left-column {
     width: 500px;
     max-width: 100%;
+    order: 1;
 }
 
 .right-column {
     width: 500px;
     max-width: 100%;
+    order: 2;
 }
 
 /* ============================================
@@ -134,7 +136,7 @@ h1 {
 .film-item {
     position: relative;
     cursor: pointer;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .film-item a {
@@ -254,8 +256,14 @@ h1 {
         gap: 40px;
     }
 
-    .left-column,
+    .left-column {
+        order: 1;
+        width: 100%;
+        max-width: 100%;
+    }
+
     .right-column {
+        order: 2;
         width: 100%;
         max-width: 100%;
     }
