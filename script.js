@@ -13,9 +13,17 @@ const filmsData = [
     }
 ];
 
-// Load films on page load
+// Random images for the right column
+const randomImages = [
+    '1_.jpg',
+    '2_.jpg',
+    '3_.jpg'
+];
+
+// Load films and random image on page load
 window.addEventListener('DOMContentLoaded', () => {
     loadFilms();
+    loadRandomImage();
 });
 
 function loadFilms() {
@@ -34,4 +42,14 @@ function loadFilms() {
         `;
         filmsGrid.appendChild(filmElement);
     });
+}
+
+function loadRandomImage() {
+    const randomIndex = Math.floor(Math.random() * randomImages.length);
+    const selectedImage = randomImages[randomIndex];
+    const imageElement = document.getElementById('random-image');
+    if (imageElement) {
+        imageElement.src = selectedImage;
+        console.log('Loaded random image:', selectedImage);
+    }
 }
