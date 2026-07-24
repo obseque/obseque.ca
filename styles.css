@@ -18,6 +18,15 @@ body {
     font-size: 14px;
 }
 
+/* VISUALLY-HIDDEN (accessibility helper) */
+.visually-hidden {
+    position: absolute !important;
+    height: 1px; width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+}
+
 /* ============================================
    NAVIGATION
    ============================================ */
@@ -93,6 +102,131 @@ h1 {
     margin-bottom: 50px;
     text-transform: uppercase;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* COMMENTS: keep the exact minimalist visual language
+   Use the same font family, sizes, spacing and borders as the rest of the site. */
+
+.comments-section {
+    margin-top: 30px;
+}
+
+.comments-section h2 {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.comments-meta {
+    font-size: 12px;
+    color: #666666;
+    margin-bottom: 12px;
+    letter-spacing: 0.1em;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.comment-form textarea,
+.comment-form input[type="text"] {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #111111;
+    background: #ffffff;
+    border: 1px solid #000000; /* match image borders */
+    padding: 12px;
+    border-radius: 2px;
+    resize: vertical;
+}
+
+.comment-form textarea:focus,
+.comment-form input[type="text"]:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.comment-form-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.comment-form button {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    padding: 8px 16px;
+    background: #ffffff;
+    color: #111111;
+    border: 1px solid #000000;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.comment-form button:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.comment-error {
+    font-size: 12px;
+    color: #b00020;
+}
+
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.comment-item {
+    border: 1px solid #000000;
+    padding: 12px;
+    border-radius: 2px;
+    background: #ffffff;
+}
+
+.comment-meta {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    margin-bottom: 6px;
+}
+
+.comment-author {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+}
+
+.comment-date {
+    font-size: 11px;
+    color: #666666;
+    letter-spacing: 0.1em;
+}
+
+.comment-body {
+    font-size: 14px;
+    color: #111111;
+    white-space: pre-wrap;
+}
+
+/* Keep responsiveness consistent with the rest of the site */
+@media (max-width: 768px) {
+    .section {
+        padding: 40px 20px;
+    }
+
+    .comment-form textarea {
+        min-height: 80px;
+    }
 }
 
 /* ============================================
