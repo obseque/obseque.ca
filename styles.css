@@ -356,23 +356,6 @@ h1 {
    RESPONSIVE DESIGN
    ============================================ */
 
-@media (max-width: 1024px) {
-    /* allow wrapping below 1024px so columns stack on narrow screens */
-    .content-wrapper {
-        flex-wrap: wrap;
-        gap: 60px;
-    }
-
-    .content-wrapper {
-        gap: 60px;
-    }
-
-    .left-column,
-    .right-column {
-        width: 400px;
-    }
-}
-
 @media (max-width: 768px) {
     .logo {
         font-size: 48px;
