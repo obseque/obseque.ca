@@ -107,23 +107,21 @@ h1 {
 /* COMMENTS: keep the exact minimalist visual language
    Use the same font family, sizes, spacing and borders as the rest of the site. */
 
-/* Full-width comments row spanning the two columns */
+/* Full-width comments row placed below the two columns */
 .comments-full {
-    flex-basis: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
 }
 
-/* Inner container sized to match two columns + gap (500 + 100 + 500 = 1100px)
-   but responsive so it never exceeds available width */
+/* Inner container sized to align with site width but responsive */
 .comments-inner {
-    width: 1100px;
+    width: 1100px; /* 500 + 100 gap + 500 */
     max-width: 100%;
 }
 
-/* Lower the comments section a bit so it starts under the right picture height */
 .comments-section {
-    margin-top: 40px; /* lowered a little */
+    margin-top: 30px; /* slight gap under the columns */
 }
 
 .comments-section h2 {
@@ -163,9 +161,9 @@ h1 {
     width: 100%;
 }
 
-/* Make the comment textarea noticeably larger */
+/* Slightly larger comment textarea than original */
 .comment-form textarea {
-    min-height: 140px; /* bigger comment box */
+    min-height: 120px;
 }
 
 .comment-form textarea:focus,
@@ -250,10 +248,10 @@ h1 {
     }
 
     .comment-form textarea {
-        min-height: 120px;
+        min-height: 100px;
     }
 
-    .comments-inner { width: 100%; }
+    .comments-inner { width: 100%; padding: 0 10px; }
 
     .logo {
         font-size: 48px;
