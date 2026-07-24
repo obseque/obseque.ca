@@ -11,7 +11,7 @@
     <nav class="navigation">
         <div class="nav-container">
             <div class="logo-container">
-                <img src="ObsequeLog.png" alt="Obsèque Logo" class="logo-image">
+                <img src="ObsequeLog.png" alt="Obsèce Logo" class="logo-image">
             </div>
             <div class="contact-link">contact : <a href="mailto:obseque@proton.me">obseque@proton.me</a></div>
         </div>
@@ -26,32 +26,6 @@
                     <div class="films-grid" id="films-grid">
                         <!-- Films will be populated here -->
                     </div>
-
-                    <!-- COMMENTS SECTION (minimalist; matches site style) -->
-                    <section id="comments-section" class="comments-section" aria-labelledby="comments-heading">
-                        <h2 id="comments-heading">Comments</h2>
-
-                        <div class="comments-meta">
-                            <span id="comments-count">0</span> comments
-                        </div>
-
-                        <form id="comment-form" class="comment-form" novalidate>
-                            <label for="comment-input" class="visually-hidden">Comment</label>
-                            <textarea id="comment-input" name="comment" rows="4" maxlength="500" placeholder="Write a comment..." required></textarea>
-
-                            <label for="name-input" class="visually-hidden">Name (optional)</label>
-                            <input id="name-input" name="name" type="text" placeholder="Name (optional)" maxlength="100">
-
-                            <div class="comment-form-row">
-                                <button id="submit-comment" type="submit">Post</button>
-                                <div id="comment-error" class="comment-error" role="status" aria-live="polite"></div>
-                            </div>
-                        </form>
-
-                        <div id="comments-list" class="comments-list" aria-live="polite">
-                            <!-- Comments appended here -->
-                        </div>
-                    </section>
                 </div>
 
                 <!-- RIGHT COLUMN: RANDOM IMAGE -->
@@ -60,6 +34,37 @@
                         <img id="random-image" src="" alt="Random artwork" class="featured-image">
                     </div>
                 </div>
+
+                <!-- COMMENTS: full-width row within the content wrapper -->
+                <div class="comments-full">
+                    <div class="comments-inner">
+                        <section id="comments-section" class="comments-section" aria-labelledby="comments-heading">
+                            <h2 id="comments-heading">Comments</h2>
+
+                            <div class="comments-meta">
+                                <span id="comments-count">0</span> comments
+                            </div>
+
+                            <form id="comment-form" class="comment-form" novalidate>
+                                <label for="comment-input" class="visually-hidden">Comment</label>
+                                <textarea id="comment-input" name="comment" rows="4" maxlength="500" placeholder="Write a comment..." required></textarea>
+
+                                <label for="name-input" class="visually-hidden">Name (optional)</label>
+                                <input id="name-input" name="name" type="text" placeholder="Name (optional)" maxlength="100">
+
+                                <div class="comment-form-row">
+                                    <button id="submit-comment" type="submit">Post</button>
+                                    <div id="comment-error" class="comment-error" role="status" aria-live="polite"></div>
+                                </div>
+                            </form>
+
+                            <div id="comments-list" class="comments-list" aria-live="polite">
+                                <!-- Comments appended here -->
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
             </div>
         </section>
     </main>

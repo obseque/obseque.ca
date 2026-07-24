@@ -107,8 +107,23 @@ h1 {
 /* COMMENTS: keep the exact minimalist visual language
    Use the same font family, sizes, spacing and borders as the rest of the site. */
 
+/* Full-width comments row spanning the two columns */
+.comments-full {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Inner container sized to match two columns + gap (500 + 100 + 500 = 1100px)
+   but responsive so it never exceeds available width */
+.comments-inner {
+    width: 1100px;
+    max-width: 100%;
+}
+
+/* Lower the comments section a bit so it starts under the right picture height */
 .comments-section {
-    margin-top: 30px;
+    margin-top: 40px; /* lowered a little */
 }
 
 .comments-section h2 {
@@ -145,6 +160,12 @@ h1 {
     padding: 12px;
     border-radius: 2px;
     resize: vertical;
+    width: 100%;
+}
+
+/* Make the comment textarea noticeably larger */
+.comment-form textarea {
+    min-height: 140px; /* bigger comment box */
 }
 
 .comment-form textarea:focus,
@@ -219,153 +240,21 @@ h1 {
 }
 
 /* Keep responsiveness consistent with the rest of the site */
+@media (max-width: 1200px) {
+    .comments-inner { width: calc(100% - 40px); }
+}
+
 @media (max-width: 768px) {
     .section {
         padding: 40px 20px;
     }
 
     .comment-form textarea {
-        min-height: 80px;
-    }
-}
-
-/* ============================================
-   CONTENT SECTION - FLEXBOX LAYOUT
-   ============================================ */
-
-.content-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 100px;
-    flex-wrap: wrap;
-}
-
-.content-column {
-    flex-shrink: 0;
-}
-
-.left-column {
-    width: 500px;
-    max-width: 100%;
-    order: 1;
-}
-
-.right-column {
-    width: 500px;
-    max-width: 100%;
-    order: 2;
-}
-
-/* ============================================
-   FILMS SECTION - SINGLE ITEM
-   ============================================ */
-
-.films-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-}
-
-.film-item {
-    position: relative;
-    cursor: pointer;
-    overflow: visible;
-}
-
-.film-item a {
-    text-decoration: none;
-    display: block;
-}
-
-.film-thumbnail {
-    width: 100%;
-    height: auto;
-    display: block;
-    border: 1px solid #000000;
-    transition: opacity 0.3s ease;
-}
-
-.film-item:hover .film-thumbnail {
-    opacity: 0.7;
-}
-
-.film-overlay {
-    display: none;
-}
-
-.play-icon {
-    display: none;
-}
-
-.film-title {
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    margin-top: 15px;
-    text-transform: uppercase;
-    font-weight: 400;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    line-height: 1.4;
-    color: #000000;
-}
-
-.film-runtime {
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    margin-top: 5px;
-    font-weight: 400;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #666666;
-}
-
-/* ============================================
-   IMAGE CONTAINER - RIGHT COLUMN
-   ============================================ */
-
-.image-container {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ffffff;
-}
-
-.featured-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: contain;
-    object-position: center;
-    border: 1px solid #000000;
-}
-
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
-
-@media (max-width: 1200px) {
-    .content-wrapper {
-        gap: 80px;
+        min-height: 120px;
     }
 
-    .left-column,
-    .right-column {
-        width: 450px;
-    }
-}
+    .comments-inner { width: 100%; }
 
-@media (max-width: 1024px) {
-    .content-wrapper {
-        gap: 60px;
-    }
-
-    .left-column,
-    .right-column {
-        width: 400px;
-    }
-}
-
-@media (max-width: 768px) {
     .logo {
         font-size: 48px;
     }
