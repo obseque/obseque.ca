@@ -69,8 +69,8 @@ function renderMediaGrid() {
     `;
     leftGrid.appendChild(v1El);
 
-    // LEFT BOTTOM: existing memento (kept)
-    filmsData.forEach(film => {
+    // LEFT BOTTOM: existing memento (kept) -- add a larger vertical gap before it
+    filmsData.forEach((film, idx) => {
         const filmElement = document.createElement('div');
         filmElement.className = 'film-item';
         filmElement.innerHTML = `
@@ -80,17 +80,23 @@ function renderMediaGrid() {
             <p class="film-title">${film.title}</p>
             <p class="film-runtime">${film.runtime}</p>
         `;
+        // Add a large top margin to create ~5 lines of vertical space between rows
+        // Use inline style here to avoid changing global CSS
+        filmElement.style.marginTop = '100px';
         leftGrid.appendChild(filmElement);
     });
 
     // RIGHT: place Video 2 at the top of the right column, replacing the random image area
+    // Wrap the thumbnail, title and runtime in a .film-item container so they stack vertically
     const v2 = newVideos[1];
     rightContainer.innerHTML = `
-        <a href="${v2.link}" target="_blank" rel="noopener noreferrer" class="right-film-link">
-            <img src="${v2.thumbnail}" alt="${v2.title || v2.id}" class="film-thumbnail" />
-        </a>
-        <p class="film-title">${v2.title}</p>
-        <p class="film-runtime">${v2.runtime}</p>
+        <div class="film-item">
+            <a href="${v2.link}" target="_blank" rel="noopener noreferrer" class="right-film-link">
+                <img src="${v2.thumbnail}" alt="${v2.title || v2.id}" class="film-thumbnail" />
+            </a>
+            <p class="film-title">${v2.title}</p>
+            <p class="film-runtime">${v2.runtime}</p>
+        </div>
     `;
 }
 
