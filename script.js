@@ -1,8 +1,8 @@
 // ============================================
-// FILMS SECTION - THUMBNAIL GRID
+// FILMS & MEDIA SECTION - THUMBNAIL GRID
 // ============================================
 
-// Films data structure - Update with your films
+// Existing films (kept, memento will be shown below the two new videos)
 const filmsData = [
     {
         id: 1,
@@ -13,24 +13,63 @@ const filmsData = [
     }
 ];
 
-// Random images for the right column
+// New YouTube videos to add
+const newVideos = [
+    {
+        id: 'VP9nTG6Pu_M',
+        title: '', // left blank for manual edit
+        runtime: '',
+        thumbnail: 'https://img.youtube.com/vi/VP9nTG6Pu_M/maxresdefault.jpg',
+        link: 'https://youtu.be/VP9nTG6Pu_M'
+    },
+    {
+        id: '45ZqfHnofxI',
+        title: '', // left blank for manual edit
+        runtime: '',
+        thumbnail: 'https://img.youtube.com/vi/45ZqfHnofxI/maxresdefault.jpg',
+        link: 'https://youtu.be/45ZqfHnofxI'
+    }
+];
+
+// Random images for the right column (kept but not used when replaced by videos)
 const randomImages = [
     '1_.jpg',
     '2_.jpg',
     '3_.jpg'
 ];
 
-// Load films and random image on page load
+// Load media on page load
 window.addEventListener('DOMContentLoaded', () => {
-    loadFilms();
+    renderMediaGrid();
     loadRandomImage();
-    initComments();
 });
 
-function loadFilms() {
-    const filmsGrid = document.getElementById('films-grid');
-    filmsGrid.innerHTML = '';
+// Render a 2x2-like grid using existing site columns:
+// - Left column will contain: Video1 on top-left, Memento on bottom-left
+// - Right column will contain: Video2 on top-right (and keep image/other content below if present)
+function renderMediaGrid() {
+    const leftGrid = document.getElementById('films-grid');
+    const rightContainer = document.getElementById('right-media') || document.querySelector('.image-container');
 
+    if (!leftGrid || !rightContainer) return;
+
+    // Clear existing left column
+    leftGrid.innerHTML = '';
+
+    // LEFT TOP: Video 1
+    const v1 = newVideos[0];
+    const v1El = document.createElement('div');
+    v1El.className = 'film-item';
+    v1El.innerHTML = `
+        <a href="${v1.link}" target="_blank" rel="noopener noreferrer">
+            <img src="${v1.thumbnail}" alt="${v1.title || v1.id}" class="film-thumbnail">
+        </a>
+        <p class="film-title">${v1.title}</p>
+        <p class="film-runtime">${v1.runtime}</p>
+    `;
+    leftGrid.appendChild(v1El);
+
+    // LEFT BOTTOM: existing memento (kept)
     filmsData.forEach(film => {
         const filmElement = document.createElement('div');
         filmElement.className = 'film-item';
@@ -41,8 +80,18 @@ function loadFilms() {
             <p class="film-title">${film.title}</p>
             <p class="film-runtime">${film.runtime}</p>
         `;
-        filmsGrid.appendChild(filmElement);
+        leftGrid.appendChild(filmElement);
     });
+
+    // RIGHT: place Video 2 at the top of the right column, replacing the random image area
+    const v2 = newVideos[1];
+    rightContainer.innerHTML = `
+        <a href="${v2.link}" target="_blank" rel="noopener noreferrer" class="right-film-link">
+            <img src="${v2.thumbnail}" alt="${v2.title || v2.id}" class="film-thumbnail" />
+        </a>
+        <p class="film-title">${v2.title}</p>
+        <p class="film-runtime">${v2.runtime}</p>
+    `;
 }
 
 function loadRandomImage() {
@@ -52,120 +101,5 @@ function loadRandomImage() {
     if (imageElement) {
         imageElement.src = selectedImage;
         console.log('Loaded random image:', selectedImage);
-    }
-}
-
-// ==========================
-// COMMENTS - client-side
-// ==========================
-
-const COMMENTS_API = '/api/comments';
-let commentsCache = [];
-
-function initComments() {
-    const form = document.getElementById('comment-form');
-    form.addEventListener('submit', handleCommentSubmit);
-    fetchComments();
-}
-
-async function fetchComments() {
-    try {
-        const res = await fetch(COMMENTS_API);
-        if (!res.ok) throw new Error('Failed to load comments');
-        const data = await res.json();
-        commentsCache = data.comments || [];
-        document.getElementById('comments-count').textContent = data.total || commentsCache.length;
-        renderComments();
-    } catch (err) {
-        console.error(err);
-    }
-}
-
-function renderComments() {
-    const list = document.getElementById('comments-list');
-    list.innerHTML = '';
-
-    commentsCache.forEach(c => {
-        const item = document.createElement('div');
-        item.className = 'comment-item';
-
-        const meta = document.createElement('div');
-        meta.className = 'comment-meta';
-
-        const author = document.createElement('div');
-        author.className = 'comment-author';
-        author.textContent = c.name || 'Anonymous';
-
-        const date = document.createElement('div');
-        date.className = 'comment-date';
-        const d = new Date(c.created_at);
-        date.textContent = d.toLocaleString();
-
-        meta.appendChild(author);
-        meta.appendChild(date);
-
-        const body = document.createElement('div');
-        body.className = 'comment-body';
-        body.textContent = c.comment;
-
-        item.appendChild(meta);
-        item.appendChild(body);
-
-        list.appendChild(item);
-    });
-}
-
-async function handleCommentSubmit(e) {
-    e.preventDefault();
-    const textarea = document.getElementById('comment-input');
-    const nameInput = document.getElementById('name-input');
-    const errorEl = document.getElementById('comment-error');
-    const submitBtn = document.getElementById('submit-comment');
-
-    errorEl.textContent = '';
-
-    const comment = textarea.value.trim();
-    let name = nameInput.value.trim();
-    if (!name) name = 'Anonymous';
-
-    if (!comment) {
-        errorEl.textContent = 'Please enter a comment.';
-        return;
-    }
-
-    if (comment.length > 500) {
-        errorEl.textContent = 'Comments are limited to 500 characters.';
-        return;
-    }
-
-    submitBtn.disabled = true;
-
-    try {
-        const res = await fetch(COMMENTS_API, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, comment })
-        });
-
-        const data = await res.json();
-        if (!res.ok) {
-            errorEl.textContent = data && data.error ? data.error : 'Failed to post comment.';
-            submitBtn.disabled = false;
-            return;
-        }
-
-        // Prepend new comment locally to show instantly
-        commentsCache.unshift(data.comment);
-        document.getElementById('comments-count').textContent = commentsCache.length;
-        renderComments();
-
-        // Reset form
-        textarea.value = '';
-        nameInput.value = '';
-    } catch (err) {
-        console.error(err);
-        errorEl.textContent = 'Network error posting comment.';
-    } finally {
-        submitBtn.disabled = false;
     }
 }
