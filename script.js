@@ -17,15 +17,15 @@ const filmsData = [
 const newVideos = [
     {
         id: 'VP9nTG6Pu_M',
-        title: '', // left blank for manual edit
-        runtime: '',
+        title: 'Salut Dad', // provided title
+        runtime: '10:28',
         thumbnail: 'https://img.youtube.com/vi/VP9nTG6Pu_M/maxresdefault.jpg',
         link: 'https://youtu.be/VP9nTG6Pu_M'
     },
     {
         id: '45ZqfHnofxI',
-        title: '', // left blank for manual edit
-        runtime: '',
+        title: 'Bye Lorem Ipsum', // provided title
+        runtime: '4:02',
         thumbnail: 'https://img.youtube.com/vi/45ZqfHnofxI/maxresdefault.jpg',
         link: 'https://youtu.be/45ZqfHnofxI'
     }
